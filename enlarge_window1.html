@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weather Information</title>
+<style>
+    /* Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+    /* Colors */
+    :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #2980b9;
+        --background-color: #f0f0f0;
+        --text-color: #333;
+    }
+
+    /* Global Styles */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: var(--background-color);
+        margin: 0;
+        padding: 0;
+        overflow: hidden; /* This line prevents scroll bars from appearing */
+        transform: scale(1); /* Enlarge everything by 125% */
+        transform-origin: top left; /* Set origin to top left to prevent misplacement */
+    }
+
+    .container {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .heading {
+        font-size: 35px; /* Increased font size */
+        font-weight: 500;
+        color: var(--primary-color);
+        margin-bottom: 25px; /* Increased margin */
+        display: flex;
+        align-items: center;
+    }
+
+    .logo {
+        width: 125px; /* Increased size */
+        height: auto;
+        margin-right: 25px; /* Increased margin */
+    }
+
+    .section {
+        margin-bottom: 25px; /* Increased margin */
+        text-align: center;
+    }
+
+    .label {
+        font-size: 22.5px; /* Increased font size */
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+
+    .value {
+        font-size: 25px; /* Increased font size */
+        color: var(--text-color);
+    }
+
+    .last {
+        font-size: 15px; /* Increased font size */
+        color: #666;
+        text-align: center;
+    }
+
+    /* Responsive CSS */
+    @media screen and (max-width: 600px) {
+        .heading {
+            font-size: 30px; /* Increased font size */
+        }
+        .value {
+            font-size: 20px; /* Increased font size */
+        }
+        .last {
+            font-size: 12.5px; /* Increased font size */
+        }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="heading">
+        <div>
+            India Meteorological Department<br>
+            Regional Meteorological Centre<br>
+            Nungambakkam - Chennai
+        </div>
+        <img src="image/logo.png" alt="Logo" class="logo">
+    </div>
+
+    <div class="section">
+        <div class="label">Current Weather</div>
+    </div>
+
+    <div class="section">
+        <div class="label">Date:</div>
+        <div class="value" id="date"></div>
+        <div class="label">Time:</div>
+        <div class="value" id="time"></div>
+    </div>
+
+    <div class="section">
+        <div class="label">Temperature:</div>
+        <div class="value" id="temperature"></div>
+    </div>
+
+    <div class="section">
+        <div class="label">Relative Humidity:</div>
+        <div class="value" id="humidity"></div>
+    </div>
+
+    <div class="section">
+        <div class="label">Atmospheric Pressure:</div>
+        <div class="value" id="pressure"></div>
+    </div>
+
+    <div class="section">
+        <div class="label">Wind Speed and Direction:</div>
+        <div class="value" id="wind"></div>
+    </div>
+
+    <div class="section">
+        <div class="label">Rainfall:</div>
+        <div class="value" id="rainfall"></div>
+    </div>
+
+    <div class="last">
+        Developed and Maintained by Regional Instrument Maintenance Centre
+    </div>
+</div>
+
+<script>
+    // Assuming lines_array contains the data
+    document.getElementById("date").textContent = "Date: " + lines_array[4];
+    document.getElementById("time").textContent = "Time: " + lines_array[5];
+    document.getElementById("temperature").textContent = "Temperature: " + lines_array[7] + " °C";
+    document.getElementById("humidity").textContent = "Relative Humidity: " + lines_array[8] + " %";
+    document.getElementById("pressure").textContent = "Atmospheric Pressure: " + lines_array[11] + " mb";
+    document.getElementById("wind").textContent = "Wind Speed and Direction: " + lines_array[10] + " knots || " + lines_array[9] + " °";
+    document.getElementById("rainfall").textContent = "Rainfall: " + lines_array[6] + " mm";
+</script>
+</body>
+</html>

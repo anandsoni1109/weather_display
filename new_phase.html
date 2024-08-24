@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Read File and Fill Array</title>
+</head>
+<body>
+<h1>Read File and Fill Array</h1>
+<input type="file" id="fileInput">
+<div id="output"></div>
+
+<script>
+    // Function to handle file input change event
+    document.getElementById('fileInput').addEventListener('change', function(event) {
+        const file = event.target.files[0]; // Get the selected file
+        const reader = new FileReader(); // Create a FileReader object
+
+        reader.onload = function() {
+            const fileContent = reader.result; // Get the content of the file
+            const linesArray = fileContent.split('\n'); // Split content into lines
+            // Display the content in the output div
+            document.getElementById('output').textContent = linesArray.join('\n');
+        };
+
+        // Read the file as text
+        reader.readAsText(file);
+    });
+</script>
+</body>
+</html>

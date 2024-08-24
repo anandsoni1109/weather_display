@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Screen Images with Margins</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            box-sizing: border-box;
+            align-items: center; /* Vertically center the containers */
+            justify-content: center; /* Horizontally center the containers */
+        }
+        .image-container {
+            flex: 1;
+            margin: 10px; /* Margin around each image container */
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            border: 2px solid #ddd; /* Optional: Add a border around the images */
+        }
+    </style>
+    <script>
+        function updateImages() {
+            const now = new Date().getTime(); // Get the current timestamp
+            const satelliteImage = document.getElementById('satellite-image');
+            const radarImage = document.getElementById('radar-image');
+
+            // Update the src attribute with a query string to force reload
+            satelliteImage.src = `https://mausam.imd.gov.in/Satellite/3Dasiasec_vis.jpg?${now}`;
+            radarImage.src = `https://mausam.imd.gov.in/Radar/caz_cni.gif?${now}`;
+        }
+
+        setInterval(updateImages, 60000); // Update images every 60 seconds
+    </script>
+</head>
+<body onload="updateImages()">
+    <div class="image-container">
+        <img id="satellite-image" src="https://mausam.imd.gov.in/Satellite/3Dasiasec_vis.jpg" alt="Satellite Image">
+    </div>
+    <div class="image-container">
+        <img id="radar-image" src="https://mausam.imd.gov.in/Radar/caz_cni.gif" alt="Radar Image">
+    </div>
+</body>
+</html>

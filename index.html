@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Slider</title>
+<style>
+    .slider {
+        width: 100%;
+        height: 100vh; /* Set the slider height to viewport height */
+        overflow: hidden;
+        position: relative;
+    }
+
+    .slides {
+        display: flex;
+        transition: transform 0.5s ease;
+        height: 100%;
+    }
+
+    .slide {
+        width: 100%;
+        display: none; /* Hide slides by default */
+    }
+
+    .slide.active {
+        display: block; /* Show only the active slide */
+    }
+
+    .slide iframe {
+        width: 100%;
+        height: 100%;
+        border: none; /* Remove border from iframe */
+    }
+</style>
+</head>
+<body>
+
+<div class="slider">
+    <div class="slides">
+        <div class="slide active"><iframe src="enlarge_window1.html" allowfullscreen></iframe></div>
+        <div class="slide"><iframe src="radarsat.html" allowfullscreen></iframe></div>
+        <div class="slide"><iframe src="15_year_display.html" allowfullscreen></iframe></div>
+        <!-- Add more slides as needed -->
+    </div>
+</div>
+
+<script>
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function showSlides() {
+        slides.forEach(slide => {
+            slide.classList.remove('active'); // Hide all slides
+        });
+
+        slideIndex++;
+
+        if (slideIndex >= slides.length) {
+            slideIndex = 0;
+        }
+
+        slides[slideIndex].classList.add('active'); // Show the current slide
+    }
+
+    setInterval(showSlides, 10000); // Change slide every 3 seconds
+</script>
+
+</body>
+</html>
